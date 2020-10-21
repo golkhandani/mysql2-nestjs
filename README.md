@@ -1,62 +1,37 @@
 
-# Fastest Validation Combined with nestjs
+# MySql2 Combined with nestjs
+
+For more detail look at [MySql2](https://www.npmjs.com/package/mysql2#using-connection-pools)
+
 
 ```javascript
-
-@ValidationSchema({
-  strict: true
+@Module({
+  imports: [
+    NestMysql2Module.register({
+      host: "localhost",
+      port: 30006,
+      user: "root",
+      password: "example"
+    })
+  ],
+  controllers: [AppController],
+  providers: [AppService],
 })
-class NestedEntity {
-  @Alphabet({ min: 5 })
-  prop7: string;
-}
-
-@ValidationSchema({
-  strict: true
-})
-class MyBody {
-  @UUID()
-  prop1: string;
-
-  @Enum({ values: ["one", "two"] })
-  prop2: "one" | "two";
-
-  @Email()
-  prop3: string;
-
-  @Numeric({ positive: true })
-  prop4: number;
-
-  @NestedObject()
-  prop5: NestedEntity;
-
-  @ArrayOf({
-    items: NestedEntity
-  })
-  prop6: NestedEntity[];
-}
+export class AppModule { }
 ```
 
 
-Then in your `controller` add the `class`:
+Then in your `controller`:
 
 ```javascript
-@Post()
-  postHello(
-    @Body() body: MyBody
-  ): string {
-
-    return helloFvn();
-  }
+constructor(
+    @InjectMysql()
+    private readonly mysql: Mysql
+  ) { }
 ```
 
-And in the  main.ts` add these lines:
 
 ```javascript
-app.useGlobalPipes(new FastestValidatorPipe());
-app.useGlobalFilters(new FastestValidatorExceptionFilter({
-    showStack: false
-  })
-);
+const [result, fields] = await this.mysql.query("SELECT 1+2");
 
 ```

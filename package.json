@@ -1,7 +1,7 @@
 {
-  "name": "fastest-validator-nestjs",
-  "version": "0.3.1",
-  "description": "NestJS package for fastest-validator",
+  "name": "mysql2-nestjs",
+  "version": "0.1.1",
+  "description": "NestJS package for mysql2",
   "author": "golkhandani",
   "license": "MIT",
   "readmeFilename": "README.md",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/golkhandani/fastest-validator-nestjs"
+    "url": "https://github.com/golkhandani/mysql2-nestjs"
   },
   "main": "dist/index.js",
   "typings": "./dist/index.d.ts",
@@ -20,10 +20,9 @@
   ],
   "keywords": [
     "nestjs",
-    "decorator",
-    "validator",
-    "fastest-validator",
-    "class-validator",
+    "raw query",
+    "mysql",
+    "mysql2",
     "nest",
     "typescript"
   ],
@@ -101,6 +100,6 @@
     "testEnvironment": "node"
   },
   "dependencies": {
-    "fastest-validator": "^1.8.0"
+    "mysql2": "^2.2.5"
   }
 }
