@@ -46,8 +46,7 @@ class NestMysql2Service {
     @Inject(NEST_MYSQL2_OPTIONS)
     private _NestMysql2Options: NestMysql2Options,
   ) {
-    this.logger = new Logger('NestMysql2Service');
-    this.logger.setContext('MySQL');
+    this.logger = new Logger('MySQL');
   }
   async getPool() {
     if (!this.pool) {
